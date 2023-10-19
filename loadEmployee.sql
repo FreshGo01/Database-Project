@@ -1,0 +1,90 @@
+-- insert data for Employee table
+INSERT INTO Employee (Employee_ID, Firstname, Lastname, Employee_Address, Employee_Birthday, Employee_Age, Employee_PositionName, Employee_Salary, Employee_Gender) 
+    VALUES  (1,'Khulchalee','Rattanakorn','67 Sukhumvit Road, Huai Khwang, Ko Samui, Chiang Mai','1978-11-21',45,'Educator',30000.0,'Female'),
+            (2,'Kornsahanan','Torpongpan','90 Sukhumvit Road, Noppharat Thara, Lat Phrao, Nonthaburi','1982-06-07',41,'Educator',30000.0,'Male'),
+            (3,'Kamonwan','Sangrawee','62 Sukhumvit Road, Huai Khwang, Bang Rak, Nonthaburi','1988-12-11',35,'Educator',30000.0,'Female'),
+            (4,'Hansa','Rodngern','26 Sukhumvit Road, Noppharat Thara, Thalang, Phuket','1978-05-09',45,'Acting Head of the Dean''s Office / Finance and Accounting Analyst',32000.0,'Female'),
+            (5,'Sirijan','Chamnanchang','71 Sukhumvit Road, Noppharat Thara, Ko Samui, Chiang Mai','1990-04-28',33,'Supply Analyst',32500.0,'Female'),
+            (6,'Pattama','Wachiraphan','54 Sukhumvit Road, Noppharat Thara, Bang Rak, Bangkok','1986-06-16',37,'Finance and Accounting Analyst',33000.0,'Female'),
+            (7,'Nittaya','Tiraphongphat','79 Sukhumvit Road, Khlong Toei, Sathon, Rayong','1993-06-12',30,'General Administration Officer',33000.0,'Female'),
+            (8,'Prempreeda','Salubsee','10 Sukhumvit Road, Bo Put, Mueang Surat Thani, Chiang Mai','1979-06-22',44,'General Administration Officer',33000.0,'Female'),
+            (9,'Onanong','Roitha','85 Sukhumvit Road, Chalong, Sathon, Nonthaburi','1980-06-18',43,'Plan and Policy Analyst',33000.0,'Female'),
+            (10,'Kriengsak','Panphotong','9 Sukhumvit Road, Watthana, Sathon, Chonburi','1993-03-02',30,'Computer Technical Officer',35000.0,'Male'),
+            (11,'Sithipong','Chimthai','85 Sukhumvit Road, Bo Put, Mueang Krabi, Pathum Thani','1993-05-28',30,'Computer Technical Officer',35000.0,'Male'),
+            (12,'Aumnaj','Boonnamon','85 Sukhumvit Road, Watthana, Ko Samui, Pathum Thani','1980-06-25',43,'Technician worker',20000.0,'Male'),
+            (13,'Wanpen','Tidchai','69 Sukhumvit Road, Bo Put, Lat Phrao, Pathum Thani','1969-07-09',54,'Worker',20000.0,'Female')
+            ;
+
+-- inset data for EmployeeEmail table
+INSERT INTO EmployeeEmail (Employee_Email, Employee_ID)
+    VALUES  ('khulchalee@informatics.buu.ac.th',1),
+            ('kornsahanan@buu.ac.th',2),
+            ('kamonwans@go.buu.ac.th',3),
+            ('hansa@buu.ac.th',4),
+            ('sirijan@informatics.buu.ac.th',5),
+            ('pattamawa@buu.ac.th',6),
+            ('nittayat@informatics.buu.ac.th',7),
+            ('prempreeda@informatics.buu.ac.th',8),
+            ('onanong@informatics.buu.ac.th',9),
+            ('isdat@informatics.buu.ac.th',10),
+            ('sithipong@informatics.buu.ac.th',11),
+            ('aumnajb@informatics.buu.ac.th',12),
+            ('wanpen.ti@buu.ac.th',13);
+
+-- insert data for EmployeePhone table
+INSERT INTO EmployeePhone (Employee_Phone, Employee_ID)
+    VALUES  ('0743075099',1),
+            ('0633747008',2),
+            ('0477424120',3),
+            ('0537424120',4),
+            ('0734197639',5),
+            ('0767901019',6),
+            ('0353419299',7),
+            ('0575124772',8),
+            ('0412189134',9),
+            ('0540254071',10),
+            ('0423256159',11),
+            ('0221318270',12),
+            ('0575899598',13)
+            ;
+
+-- insert data for EmployeeResponsibility table
+INSERT INTO EmployeeResponsibility (Employee_ID, Employee_Responsibility)
+    VALUES  (1,'Coordinate academics for undergraduate programs Department of Software Engineering and the field of applied artificial intelligence and intelligent technology'),
+            (1,'Coordinate academics for graduate programs Data Science major'),
+            (1,'Coordinate with teaching and examination arrangements'),
+            (1,'Academic correspondence work'),
+            (2,'Coordinate academics for undergraduate programs Information Technology major and the field of information technology for the digital industry'),
+            (2,'Coordinate with teaching and examination arrangements'),
+            (2,'Student affairs'),
+            (3,'Coordinate academics for undergraduate programs Department of Computer Science'),
+            (3,'Coordinate with teaching and examination arrangements'),
+            (3,'Cooperative education'),
+            (3,'Student admission work'),
+            (4,'Providing financial services, receiving money, making payments'),
+            (4,'Provide advice on financial regulations'),
+            (5,'Providing purchasing/hiring services'),
+            (5,'Borrow/return equipment'),
+            (6,'Providing financial services, receiving money, making payments'),
+            (6,'Provide advice on financial regulations'),
+            (6,'Research'),
+            (7,'Correspondence work'),
+            (7,'Academic services'),
+            (7,'Secretarial work'),
+            (7,'Industrial zone'),
+            (8,'Personnel work'),
+            (8,'Internal educational quality assurance work at department level'),
+            (9,'Policy and plan analysis work'),
+            (9,'Internal educational quality assurance work Course level'),
+            (9,'Other tasks as assigned'),
+            (10,'Providing server and network services within the Faculty'),
+            (10,'Provide advice on network problems Server, software and hardware'),
+            (11,'Providing services for using computer laboratories'),
+            (11,'Provide advice on software and hardware problems'),
+            (12,'Providing building maintenance services'),
+            (12,'Plumbing work'),
+            (12,'Electrical work'),
+            (12,'Air conditioning system'),
+            (12,'Equipment maintenance work'),
+            (13,'Providing services in printed documents and taking care of classrooms'),
+            (13,'Providing building cleaning services');
