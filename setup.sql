@@ -147,19 +147,30 @@ CREATE TABLE
         ClassRoomSchedule_Day TEXT NOT NULL, -- example 'Monday'
         AcademicYear INTEGER NOT NULL, -- example '2021'
         Semester TEXT NOT NULL, -- example '1'
-        Section TEXT NOT NULL, -- example '1'
+        Class_ID INTEGER NOT NULL,
         Subject_ID INTEGER NOT NULL,
+        FOREIGN KEY (Class_ID) REFERENCES Class (Class_ID) ON UPDATE CASCADE ON DELETE CASCADE,
         FOREIGN KEY (Subject_ID) REFERENCES Subject (Subject_ID) ON UPDATE CASCADE ON DELETE CASCADE
     );
 
 -- create Class table to store student is register to class
 CREATE TABLE
-    Class (
-        ClassRoomSchedule_ID INTEGER NOT NULL,
+    Class (Class_ID INTEGER PRIMARY KEY NOT NULL,
+            Section INTEGER NOT NULL);
+
+-- create ClassStudent table to store student is register to class
+CREATE TABLE
+    ClassStudent (
+        ClassStudent_ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        StudentStatus TEXT NOT NULL CHECK (
+            StudentStatus = 'Registed'
+            OR StudentStatus = 'Wait'
+            OR StudentStatus = 'Drop'
+        ),
         Student_ID INTEGER NOT NULL,
-        PRIMARY KEY (ClassRoomSchedule_ID, Student_ID), -- composite key
-        FOREIGN KEY (ClassRoomSchedule_ID) REFERENCES ClassRoomSchedule (ClassRoomSchedule_ID) ON UPDATE CASCADE ON DELETE CASCADE,
-        FOREIGN KEY (Student_ID) REFERENCES Student (Student_ID) ON UPDATE CASCADE ON DELETE CASCADE
+        Class_ID INTEGER NOT NULL,
+        FOREIGN KEY (Student_ID) REFERENCES Student (Student_ID) ON UPDATE CASCADE ON DELETE CASCADE,
+        FOREIGN KEY (Class_ID) REFERENCES Class (Class_ID) ON UPDATE CASCADE ON DELETE CASCADE
     );
 
 -- create class attendance table
@@ -259,4 +270,12 @@ CREATE TABLE
         FOREIGN KEY (Professor_ID) REFERENCES Professor (Professor_ID) ON UPDATE CASCADE ON DELETE CASCADE
     );
 
+COMMIT TRANSACTION;
+
+BEGIN TRANSACTION;
+.read loadProfessor.sql
+.read loadStudent.sql
+.read loadSubject.sql
+.read loadEmployee.sql
+.read addWorkAtt.sql
 COMMIT TRANSACTION;
