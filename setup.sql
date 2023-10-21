@@ -137,12 +137,17 @@ CREATE TABLE
 CREATE TABLE
     ClassRoomSchedule (
         ClassRoomSchedule_ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        ClassRoomSchedule_Name TEXT NOT NULL, -- example 'IF-6T02'
-        ClassRoomSchedule_Description TEXT NULL, -- example 'Computer Lab Room'
-        ClassRoomSchedule_Time TEXT NOT NULL, -- example '08:00-10:00'
+        ClassRoomSchedule_Room TEXT NOT NULL, -- example 'IF-6T02'
+        ClassRoomSchedule_RoomType TEXT NULL,
+        ClassRoomSchedule_StartTime TEXT NOT NULL, -- example '08:00'
+        ClassRoomSchedule_EndTime TEXT NOT NULL, -- example '10:00'
+        ClassRoomSchedule_Time TEXT GENERATED ALWAYS AS (
+            ClassRoomSchedule_StartTime || '-' || ClassRoomSchedule_EndTime
+        ) VIRTUAL,
         ClassRoomSchedule_Day TEXT NOT NULL, -- example 'Monday'
-        AcademicYear TEXT NOT NULL, -- example '2021'
+        AcademicYear INTEGER NOT NULL, -- example '2021'
         Semester TEXT NOT NULL, -- example '1'
+        Section TEXT NOT NULL, -- example '1'
         Subject_ID INTEGER NOT NULL,
         FOREIGN KEY (Subject_ID) REFERENCES Subject (Subject_ID) ON UPDATE CASCADE ON DELETE CASCADE
     );
