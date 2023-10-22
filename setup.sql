@@ -14,7 +14,7 @@ DROP TABLE IF EXISTS ClassRoomSchedule;
 
 DROP TABLE IF EXISTS ClassAttendance;
 
-DROP TABLE IF EXISTS StudentAttendant;
+DROP TABLE IF EXISTS StudentAttendance;
 
 DROP TABLE IF EXISTS Employee;
 
@@ -163,7 +163,7 @@ CREATE TABLE
     ClassStudent (
         ClassStudent_ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         StudentStatus TEXT NOT NULL CHECK (
-            StudentStatus = 'Registed'
+            StudentStatus = 'Registered'
             OR StudentStatus = 'Wait'
             OR StudentStatus = 'Drop'
         ),
@@ -191,8 +191,8 @@ CREATE TABLE
 
 -- create student attendance table
 CREATE TABLE
-    StudentAttendant (
-        Student_Attendant_ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    StudentAttendance (
+        Student_Attendance_ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         ClassAttendance_ID INTEGER NOT NULL,
         Student_ID INTEGER NOT NULL,
         Student_Time_In TEXT NULL, -- example '08:00'
@@ -278,4 +278,5 @@ BEGIN TRANSACTION;
 .read loadSubject.sql
 .read loadEmployee.sql
 .read addWorkAtt.sql
+.read loadClassRoomSchedule.sql
 COMMIT TRANSACTION;
