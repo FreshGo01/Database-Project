@@ -3,9 +3,23 @@ INSERT INTO
     Class (Class_ID, Section)
 VALUES
     (1, 1), --CS
-    (2, 1), --AAI
-    (3, 1), --IT
-    (4, 1);
+    (2, 1),
+    (3, 1),
+    (4, 1),
+    (5, 1),
+    (6, 1), --AI
+    (7, 1),
+    (8, 1),
+    (9, 1),
+    (10, 1), --IT
+    (11, 1),
+    (12, 1),
+    (13, 1), --SE
+    (14, 1),
+    (15, 1),
+    (16, 1),
+    (17, 1),
+    (18, 1);
 
 --SE
 -- INSERT data for ClassRoomSchedule table
@@ -13,7 +27,7 @@ VALUES
 INSERT INTO
     ClassRoomSchedule (
         Subject_ID,
-        ClassRoomSchedule_Room,
+        ClassRoomSchedule_RoomName,
         ClassRoomSchedule_RoomType,
         ClassRoomSchedule_StartTime,
         ClassRoomSchedule_EndTime,
@@ -55,7 +69,7 @@ VALUES
         'Monday',
         2023,
         1,
-        1
+        2
     ),
     (
         88624065,
@@ -66,7 +80,7 @@ VALUES
         'Monday',
         2023,
         1,
-        1
+        2
     ),
     (
         88621065,
@@ -77,7 +91,7 @@ VALUES
         'Tuesday',
         2023,
         1,
-        1
+        3
     ),
     (
         88621065,
@@ -88,7 +102,7 @@ VALUES
         'Tuesday',
         2023,
         1,
-        1
+        3
     ),
     (
         88622065,
@@ -99,7 +113,7 @@ VALUES
         'Tuesday',
         2023,
         1,
-        1
+        4
     ),
     (
         88622065,
@@ -110,7 +124,7 @@ VALUES
         'Tuesday',
         2023,
         1,
-        1
+        4
     ),
     (
         88624165,
@@ -121,7 +135,7 @@ VALUES
         'Friday',
         2023,
         1,
-        1
+        5
     ),
     (
         88624165,
@@ -132,7 +146,7 @@ VALUES
         'Friday',
         2023,
         1,
-        1
+        5
     ),
     --AAI
     (
@@ -144,7 +158,7 @@ VALUES
         'Monday',
         2023,
         1,
-        2
+        6
     ),
     (
         89022264,
@@ -155,7 +169,7 @@ VALUES
         'Monday',
         2023,
         1,
-        2
+        6
     ),
     (
         89022164,
@@ -166,7 +180,7 @@ VALUES
         'Tuesday',
         2023,
         1,
-        2
+        7
     ),
     (
         89022164,
@@ -177,7 +191,7 @@ VALUES
         'Tuesday',
         2023,
         1,
-        2
+        7
     ),
     (
         89022364,
@@ -188,7 +202,7 @@ VALUES
         'Wednesday ',
         2023,
         1,
-        2
+        8
     ),
     (
         89022364,
@@ -199,7 +213,7 @@ VALUES
         'Wednesday',
         2023,
         1,
-        2
+        8
     ),
     (
         89033064,
@@ -210,7 +224,7 @@ VALUES
         'Friday',
         2023,
         1,
-        2
+        9
     ),
     (
         89033064,
@@ -221,7 +235,7 @@ VALUES
         'Friday',
         2023,
         1,
-        2
+        9
     ),
     --IT
     (
@@ -233,7 +247,7 @@ VALUES
         'Monday',
         2023,
         1,
-        3
+        10
     ),
     (
         88710265,
@@ -244,7 +258,7 @@ VALUES
         'Monday',
         2023,
         1,
-        3
+        10
     ),
     (
         88510265,
@@ -255,7 +269,7 @@ VALUES
         'Monday',
         2023,
         1,
-        3
+        11
     ),
     (
         88510265,
@@ -266,7 +280,7 @@ VALUES
         'Monday',
         2023,
         1,
-        3
+        11
     ),
     (
         88710065,
@@ -277,7 +291,7 @@ VALUES
         'Tuesday ',
         2023,
         1,
-        3
+        12
     ),
     --SE
     (
@@ -289,7 +303,7 @@ VALUES
         'Monday',
         2023,
         1,
-        4
+        13
     ),
     (
         88822365,
@@ -300,7 +314,7 @@ VALUES
         'Tuesday',
         2023,
         1,
-        4
+        14
     ),
     (
         88520365,
@@ -311,7 +325,7 @@ VALUES
         'Tuesday',
         2023,
         1,
-        4
+        15
     ),
     (
         88825165,
@@ -322,7 +336,7 @@ VALUES
         'Tuesday',
         2023,
         1,
-        4
+        16
     ),
     (
         88520365,
@@ -333,7 +347,7 @@ VALUES
         'Wednesday ',
         2023,
         1,
-        4
+        15
     ),
     (
         88822365,
@@ -344,7 +358,7 @@ VALUES
         'Wednesday',
         2023,
         1,
-        4
+        17
     ),
     (
         88823565,
@@ -355,7 +369,7 @@ VALUES
         'Friday',
         2023,
         1,
-        4
+        18
     );
 
 INSERT INTO
@@ -372,36 +386,176 @@ VALUES
     (1, 65160507, 'Registered'),
     (1, 65160508, 'Registered'),
     (1, 65160509, 'Drop'),
+    (2, 65160500, 'Registered'),
+    (2, 65160501, 'Drop'),
+    (2, 65160502, 'Registered'),
+    (2, 65160503, 'Registered'),
+    (2, 65160504, 'Registered'),
+    (2, 65160505, 'Registered'),
+    (2, 65160506, 'Registered'),
+    (2, 65160507, 'Registered'),
+    (2, 65160508, 'Registered'),
+    (2, 65160509, 'Registered'),
+    (3, 65160500, 'Registered'),
+    (3, 65160501, 'Registered'),
+    (3, 65160502, 'Registered'),
+    (3, 65160503, 'Registered'),
+    (3, 65160504, 'Registered'),
+    (3, 65160505, 'Registered'),
+    (3, 65160506, 'Registered'),
+    (3, 65160507, 'Registered'),
+    (3, 65160508, 'Registered'),
+    (3, 65160509, 'Drop'),
+    (4, 65160500, 'Registered'),
+    (4, 65160501, 'Registered'),
+    (4, 65160502, 'Registered'),
+    (4, 65160503, 'Registered'),
+    (4, 65160504, 'Registered'),
+    (4, 65160505, 'Registered'),
+    (4, 65160506, 'Registered'),
+    (4, 65160507, 'Registered'),
+    (4, 65160508, 'Registered'),
+    (4, 65160509, 'Registered'),
+    (5, 65160500, 'Registered'),
+    (5, 65160501, 'Registered'),
+    (5, 65160502, 'Registered'),
+    (5, 65160503, 'Registered'),
+    (5, 65160504, 'Registered'),
+    (5, 65160505, 'Registered'),
+    (5, 65160506, 'Registered'),
+    (5, 65160507, 'Registered'),
+    (5, 65160508, 'Registered'),
+    (5, 65160509, 'Drop'),
     --AAI
-    (2, 65160048, 'Registered'),
-    (2, 65160049, 'Registered'),
-    (2, 65160050, 'Registered'),
-    (2, 65160051, 'Registered'),
-    (2, 65160052, 'Registered'),
-    (2, 65160053, 'Registered'),
-    (2, 65160054, 'Drop'),
-    (2, 65160055, 'Registered'),
-    (2, 65160056, 'Registered'),
-    (2, 65160057, 'Drop'),
+    (6, 65160048, 'Registered'),
+    (6, 65160049, 'Registered'),
+    (6, 65160050, 'Registered'),
+    (6, 65160051, 'Registered'),
+    (6, 65160052, 'Registered'),
+    (6, 65160053, 'Registered'),
+    (6, 65160054, 'Drop'),
+    (6, 65160055, 'Registered'),
+    (6, 65160056, 'Registered'),
+    (6, 65160057, 'Registered'),
+    (7, 65160048, 'Registered'),
+    (7, 65160049, 'Registered'),
+    (7, 65160050, 'Registered'),
+    (7, 65160051, 'Registered'),
+    (7, 65160052, 'Registered'),
+    (7, 65160053, 'Registered'),
+    (7, 65160054, 'Drop'),
+    (7, 65160055, 'Registered'),
+    (7, 65160056, 'Registered'),
+    (7, 65160057, 'Drop'),
+    (8, 65160048, 'Registered'),
+    (8, 65160049, 'Registered'),
+    (8, 65160050, 'Drop'),
+    (8, 65160051, 'Registered'),
+    (8, 65160052, 'Registered'),
+    (8, 65160053, 'Registered'),
+    (8, 65160054, 'Registered'),
+    (8, 65160055, 'Registered'),
+    (8, 65160056, 'Registered'),
+    (8, 65160057, 'Drop'),
+    (9, 65160048, 'Registered'),
+    (9, 65160049, 'Registered'),
+    (9, 65160050, 'Registered'),
+    (9, 65160051, 'Registered'),
+    (9, 65160052, 'Registered'),
+    (9, 65160053, 'Registered'),
+    (9, 65160054, 'Drop'),
+    (9, 65160055, 'Registered'),
+    (9, 65160056, 'Registered'),
+    (9, 65160057, 'Registered'),
     --IT
-    (3, 65161111, 'Registered'),
-    (3, 65161122, 'Registered'),
-    (3, 65161133, 'Registered'),
-    (3, 65161144, 'Drop'),
-    (3, 65161155, 'Registered'),
-    (3, 65161166, 'Drop'),
-    (3, 65161177, 'Registered'),
-    (3, 65161188, 'Registered'),
-    (3, 65161190, 'Registered'),
-    (3, 65161199, 'Drop'),
+    (10, 65161111, 'Registered'),
+    (10, 65161122, 'Registered'),
+    (10, 65161133, 'Registered'),
+    (10, 65161144, 'Registered'),
+    (10, 65161155, 'Registered'),
+    (10, 65161166, 'Drop'),
+    (10, 65161177, 'Registered'),
+    (10, 65161188, 'Registered'),
+    (10, 65161190, 'Registered'),
+    (10, 65161199, 'Drop'),
+    (11, 65161111, 'Registered'),
+    (11, 65161122, 'Registered'),
+    (11, 65161133, 'Registered'),
+    (11, 65161144, 'Drop'),
+    (11, 65161155, 'Registered'),
+    (11, 65161166, 'Drop'),
+    (11, 65161177, 'Registered'),
+    (11, 65161188, 'Registered'),
+    (11, 65161190, 'Registered'),
+    (11, 65161199, 'Drop'),
+    (12, 65161111, 'Registered'),
+    (12, 65161122, 'Registered'),
+    (12, 65161133, 'Registered'),
+    (12, 65161144, 'Drop'),
+    (12, 65161155, 'Registered'),
+    (12, 65161166, 'Registered'),
+    (12, 65161177, 'Registered'),
+    (12, 65161188, 'Registered'),
+    (12, 65161190, 'Registered'),
+    (12, 65161199, 'Registered'),
     --SE
-    (4, 65160100, 'Registered'),
-    (4, 65160101, 'Registered'),
-    (4, 65160102, 'Registered'),
-    (4, 65160103, 'Registered'),
-    (4, 65160104, 'Registered'),
-    (4, 65160105, 'Registered'),
-    (4, 65160106, 'Drop'),
-    (4, 65160107, 'Registered'),
-    (4, 65160108, 'Registered'),
-    (4, 65160109, 'Drop');
+    (13, 65160100, 'Registered'),
+    (13, 65160101, 'Registered'),
+    (13, 65160102, 'Registered'),
+    (13, 65160103, 'Registered'),
+    (13, 65160104, 'Registered'),
+    (13, 65160105, 'Registered'),
+    (13, 65160106, 'Drop'),
+    (13, 65160107, 'Registered'),
+    (13, 65160108, 'Registered'),
+    (13, 65160109, 'Drop'),
+    (14, 65160100, 'Registered'),
+    (14, 65160101, 'Registered'),
+    (14, 65160102, 'Registered'),
+    (14, 65160103, 'Registered'),
+    (14, 65160104, 'Registered'),
+    (14, 65160105, 'Registered'),
+    (14, 65160106, 'Drop'),
+    (14, 65160107, 'Registered'),
+    (14, 65160108, 'Registered'),
+    (14, 65160109, 'Registered'),
+    (15, 65160100, 'Registered'),
+    (15, 65160101, 'Registered'),
+    (15, 65160102, 'Registered'),
+    (15, 65160103, 'Registered'),
+    (15, 65160104, 'Registered'),
+    (15, 65160105, 'Registered'),
+    (15, 65160106, 'Drop'),
+    (15, 65160107, 'Registered'),
+    (15, 65160108, 'Registered'),
+    (15, 65160109, 'Drop'),
+    (16, 65160100, 'Registered'),
+    (16, 65160101, 'Registered'),
+    (16, 65160102, 'Registered'),
+    (16, 65160103, 'Registered'),
+    (16, 65160104, 'Registered'),
+    (16, 65160105, 'Registered'),
+    (16, 65160106, 'Registered'),
+    (16, 65160107, 'Registered'),
+    (16, 65160108, 'Registered'),
+    (16, 65160109, 'Drop'),
+    (17, 65160100, 'Registered'),
+    (17, 65160101, 'Registered'),
+    (17, 65160102, 'Registered'),
+    (17, 65160103, 'Registered'),
+    (17, 65160104, 'Registered'),
+    (17, 65160105, 'Registered'),
+    (17, 65160106, 'Drop'),
+    (17, 65160107, 'Registered'),
+    (17, 65160108, 'Registered'),
+    (17, 65160109, 'Drop'),
+    (18, 65160100, 'Registered'),
+    (18, 65160101, 'Registered'),
+    (18, 65160102, 'Registered'),
+    (18, 65160103, 'Registered'),
+    (18, 65160104, 'Registered'),
+    (18, 65160105, 'Registered'),
+    (18, 65160106, 'Registered'),
+    (18, 65160107, 'Registered'),
+    (18, 65160108, 'Registered'),
+    (18, 65160109, 'Drop');

@@ -137,7 +137,7 @@ CREATE TABLE
 CREATE TABLE
     ClassRoomSchedule (
         ClassRoomSchedule_ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        ClassRoomSchedule_Room TEXT NOT NULL, -- example 'IF-6T02'
+        ClassRoomSchedule_RoomName TEXT NOT NULL, -- example 'IF-6T02'
         ClassRoomSchedule_RoomType TEXT NULL,
         ClassRoomSchedule_StartTime TEXT NOT NULL, -- example '08:00'
         ClassRoomSchedule_EndTime TEXT NOT NULL, -- example '10:00'
