@@ -279,4 +279,6 @@ BEGIN TRANSACTION;
 .read loadEmployee.sql
 .read addWorkAtt.sql
 .read loadClassRoomSchedule.sql
+.read addClassAtt.sql
+.read addStudentAtt.sql
 COMMIT TRANSACTION;
