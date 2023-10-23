@@ -19,9 +19,10 @@ VALUES
     (15, 1),
     (16, 1),
     (17, 1),
-    (18, 1);
+    (18, 1),
+    -- master degree
+    (19, 1);
 
---SE
 -- INSERT data for ClassRoomSchedule table
 -- C = Computor Lab  L = Laboratory  R = Meeting  S = Self Study  T = Tutoring M = Slope meeting room
 INSERT INTO
@@ -370,6 +371,18 @@ VALUES
         2023,
         1,
         18
+    ),
+    -- master degree 
+    (
+        88959162,
+        'IF-10M01',
+        'Meeting',
+        '8:00',
+        '12:00',
+        'Monday',
+        2023,
+        1,
+        19
     );
 
 INSERT INTO
@@ -558,4 +571,7 @@ VALUES
     (18, 65160106, 'Registered'),
     (18, 65160107, 'Registered'),
     (18, 65160108, 'Registered'),
-    (18, 65160109, 'Drop');
+    (18, 65160109, 'Drop'),
+    -- master degree
+    (19, 61160001, 'Registered'),
+    (19, 61160002, 'Registered');

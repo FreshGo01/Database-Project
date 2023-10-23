@@ -22,6 +22,27 @@ DROP TABLE IF EXISTS WorkerAttendance;
 
 DROP TABLE IF EXISTS WorkAttendance;
 
+DROP TABLE IF EXISTS Class;
+
+DROP TABLE IF EXISTS ClassStudent;
+
+DROP TABLE IF EXISTS ProfessorEmail;
+
+DROP TABLE IF EXISTS ProfessorPhone;
+
+DROP TABLE IF EXISTS StudentEmail;
+
+DROP TABLE IF EXISTS StudentPhone;
+
+DROP TABLE IF EXISTS EmployeeEmail;
+
+DROP TABLE IF EXISTS EmployeePhone;
+
+DROP TABLE IF EXISTS EmployeeResponsibility;
+
+DROP TABLE IF EXISTS ResponsibleSubject;
+
+
 BEGIN TRANSACTION;
 
 -- create subject table
