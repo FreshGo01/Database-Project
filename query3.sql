@@ -5,8 +5,8 @@ SELECT
     s.Subject_ID,
     c.Class_ID,
     c.Section,
-    ROUND(SUM(CASE WHEN sa.Student_Time_In IS NOT NULL THEN sa.Student_Time_In ELSE 0 END) * 100.0 / SUM(CASE WHEN crs.ClassRoomSchedule_StartTime IS NOT NULL THEN crs.ClassRoomSchedule_StartTime ELSE 0 END),2) AS StudyTimePercentage
-FROM
+    ROUND(SUM(CASE WHEN sa. IS NOT NULL THEN sa.Student_Time_In ELSE 0 END) * 100.0 / SUM(CASE WHEN crs.ClassRoomSchedule_StartTime IS NOT NULL THEN crs.ClassRoomSchedule_StartTime ELSE 0 END),2) AS StudyTimePercentage
+FROMStudent_Time_In
     Subject s
 JOIN
     ResponsibleSubject rs ON s.Subject_ID = rs.Subject_ID

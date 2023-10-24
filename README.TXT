@@ -1,14 +1,69 @@
 Group 3 : Name checking system
 
-Member 1 :  65160033 Mr. Piriya Racham
+Member   :  65160033 Mr. Piriya Racham
             65160048 Mr. Nathawat Suwannarin
             65160049 Miss Narissara Lam-on
             65160139 Mr. Prapinvit Sanamontree
             65160286 Mr. Suwat Punkhiew
             65160401 Mr. Phuwanet Koetnet
 
+B.
 Name checking system
     This project trying to implement the name checking system in faculty of Informatics Burapha University, by using relation database management system.
 We using Sqlite3 as our database management system. This project has two main section, first is the name checking system of class attendance to check student and 
 professor who attend the class. Second is the work attendance system to check the employee and professor who attend the daily work.
-    We store professors 
+    The first section revolves around the tracking of class attendance, ensuring a seamless and accurate record of students and professors present in each session. 
+This system serves as a cornerstone for fostering a transparent and accountable academic environment.
+In the second section, the focus shifts to the Work Attendance System, a mechanism designed to monitor the daily engagements of both employees and professors. 
+This holistic approach ensures that commitment and dedication are not only acknowledged but also systematically recorded. By leveraging the power of a relational database, 
+    On the positive side, the name checking system excels in enhancing the accuracy and reliability of attendance records. 
+Its meticulous tracking of class attendance and daily work commitments not only streamlines administrative processes but also cultivates a culture of accountability among students, 
+professors, and employees.However, with these advantages Therefore, there are some considerations as well. the complexity of the system while providing detailed insights.
+This can pose challenges in terms of user acceptance and accurate data entry.
+#4
+what if question
+1.What if there's a need to meticulously track class attendance?
+The SQLite3 database schema addresses this by providing a structured framework for creating tables like ClassAttendance and StudentAttendance.
+These tables meticulously record attendance details, ensuring an accurate and accessible record of who attended each class session.
+
+2.What if personalized insights are required for early intervention with students facing attendance challenges?
+The system incorporates triggers and virtual columns, allowing for the automatic generation of student email addresses and facilitating personalized communication. 
+This not only streamlines administrative processes but also enables timely interventions for students in need.
+
+3.What if there's a requirement for a transparent and verifiable account of daily work commitments for employees and professors?
+The project addresses this need through the WorkAttendance table, which records daily work engagements, including check-in and check-out times for both employees and professors.
+
+4.What if changes in academic or professional processes occur?
+The relational database design ensures flexibility, allowing for updates and adaptations to accommodate changes in processes. 
+This mitigates potential disruptions and ensures the system remains aligned with evolving requirements.
+
+C.
+The SQL code underwent a rigorous testing process to ensure its functionality and reliability. The testing procedure involved the following steps:
+
+1.Syntax Verification: The code was systematically reviewed to ensure adherence to SQLite3 syntax rules. This step involved checking for correct table creation,
+foreign key relationships, triggers, and other SQL constructs.
+
+2.Data Integrity Tests: Simulated data inputs were used to assess the system's ability to handle different scenarios. This involved inserting, updating,
+and deleting records to validate the integrity of the data in the tables.
+
+3.Constraint Validation: The code includes various constraints, such as check constraints and foreign key relationships.
+Testing involved deliberately violating these constraints to verify that the system correctly rejected invalid data entries.
+
+4.Trigger Execution: Triggers play a crucial role in automating certain processes, such as the auto-generation of student email addresses.
+Trigger execution was tested by inserting sample data and verifying that the expected outcomes were achieved.
+
+5.Scenario-Based Testing: The system was tested against different scenarios, including variations in class schedules, student registrations, and employee attendance. 
+This ensured that the code could handle real-world situations effectively.
+
+D.
+1.ClassRoomSchedule_Time: This virtual column is generated as a concatenation of ClassRoomSchedule_StartTime and ClassRoomSchedule_EndTime.
+It provides a convenient representation of the time range for a class schedule.
+
+2.Student_Name, Professor_Name: These virtual columns are generated by concatenating the Firstname and Lastname columns.
+They provide a human-readable representation of the full name for both students and professors.
+
+3.Student_Email: The trigger StudentEmail_AutoGenerate automatically generates two email addresses for each student using a predefined format.
+This is a non-obvious attribute as it demonstrates the use of triggers for automated data generation.
+
+These attributes enhance the usability and readability of the database while offering automation and convenience in certain scenarios.
+They contribute to a more user-friendly and efficient system for managing attendance and related information.
