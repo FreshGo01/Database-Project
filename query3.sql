@@ -1,11 +1,11 @@
 .mode table
---'the average percentage time of every subject that student study sort by Study Time Percentage '
-.print 'the average percentage time of every subject that student study sort by Study Time Percentage '
+--'the average percentage time of every subject that student study in 2023 sort by Study Time Percentage '
+.print 'the average percentage time of every subject that student study in academic year 2023 sort by Study Time Percentage '
 SELECT
     s.Subject_ID,
     c.Class_ID,
     c.Section,
-    ROUND(SUM(CASE WHEN sa.Student_Time_In IS NOT NULL THEN sa.Student_Time_In ELSE 0 END) * 100.0 / SUM(CASE WHEN crs.ClassRoomSchedule_StartTime IS NOT NULL THEN crs.ClassRoomSchedule_StartTime ELSE 0 END),2) AS StudyTimePercentage
+    ROUND(SUM(CASE WHEN sa.Student_Time_In IS NOT NULL THEN sa.Student_Time_In ELSE 0 END) * 100.0 / SUM(CASE WHEN crs.ClassRoomSchedule_StartTime IS NOT NULL THEN crs.ClassRoomSchedule_StartTime ELSE 0 END), 2) AS StudyTimePercentage
 FROM
     Subject s
 JOIN
@@ -20,6 +20,8 @@ LEFT JOIN
     ClassStudent cs ON c.Class_ID = cs.Class_ID
 LEFT JOIN
     StudentAttendance sa ON cs.Student_ID = sa.Student_ID
+WHERE
+    crs.AcademicYear = 2023
 GROUP BY
     s.Subject_ID, c.Class_ID, c.Section
 ORDER BY
