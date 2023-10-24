@@ -118,8 +118,8 @@ CREATE TABLE
             OR Student_Gender = 'Female'
         ),
         Student_Age INTEGER NOT NULL CHECK (Student_Age > 0),
-        Professor_ID INTEGER NOT NULL,
-        FOREIGN KEY (Professor_ID) REFERENCES Professor (Professor_ID) ON UPDATE CASCADE
+        Professor_ID INTEGER NULL,
+            FOREIGN KEY (Professor_ID) REFERENCES Professor (Professor_ID) ON UPDATE CASCADE ON DELETE SET NULL
     );
 
 -- create student email table
@@ -205,9 +205,9 @@ CREATE TABLE
             OR Professor_Check = 0
         ), -- 0 = not check, 1 = check
         ClassRoomSchedule_ID INTEGER NOT NULL,
-        Professor_ID INTEGER NOT NULL,
+        Professor_ID INTEGER NULL,
         FOREIGN KEY (ClassRoomSchedule_ID) REFERENCES ClassRoomSchedule (ClassRoomSchedule_ID) ON UPDATE CASCADE ON DELETE CASCADE,
-        FOREIGN KEY (Professor_ID) REFERENCES Professor (Professor_ID) ON UPDATE CASCADE
+        FOREIGN KEY (Professor_ID) REFERENCES Professor (Professor_ID) ON UPDATE CASCADE ON DELETE SET NULL
     );
 
 -- create student attendance table
