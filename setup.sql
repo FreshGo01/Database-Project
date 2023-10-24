@@ -4,43 +4,24 @@ PRAGMA foreign_keys = ON;
 PRAGMA encoding = "UTF-8";
 
 -- delete table if exists
-DROP TABLE IF EXISTS Subject;
-
-DROP TABLE IF EXISTS Professor;
-
-DROP TABLE IF EXISTS Student;
-
-DROP TABLE IF EXISTS ClassRoomSchedule;
-
-DROP TABLE IF EXISTS ClassAttendance;
-
-DROP TABLE IF EXISTS StudentAttendance;
-
-DROP TABLE IF EXISTS Employee;
-
-DROP TABLE IF EXISTS WorkerAttendance;
-
-DROP TABLE IF EXISTS WorkAttendance;
-
-DROP TABLE IF EXISTS Class;
-
 DROP TABLE IF EXISTS ClassStudent;
-
-DROP TABLE IF EXISTS ProfessorEmail;
-
-DROP TABLE IF EXISTS ProfessorPhone;
-
-DROP TABLE IF EXISTS StudentEmail;
-
+DROP TABLE IF EXISTS ClassAttendance;
+DROP TABLE IF EXISTS StudentAttendance;
+DROP TABLE IF EXISTS ClassRoomSchedule;
+DROP TABLE IF EXISTS Class;
 DROP TABLE IF EXISTS StudentPhone;
-
-DROP TABLE IF EXISTS EmployeeEmail;
-
-DROP TABLE IF EXISTS EmployeePhone;
-
-DROP TABLE IF EXISTS EmployeeResponsibility;
-
+DROP TABLE IF EXISTS StudentEmail;
+DROP TABLE IF EXISTS Student;
+DROP TABLE IF EXISTS ProfessorPhone;
+DROP TABLE IF EXISTS ProfessorEmail;
+DROP TABLE IF EXISTS Professor;
 DROP TABLE IF EXISTS ResponsibleSubject;
+DROP TABLE IF EXISTS Subject;
+DROP TABLE IF EXISTS EmployeeResponsibility;
+DROP TABLE IF EXISTS EmployeePhone;
+DROP TABLE IF EXISTS EmployeeEmail;
+DROP TABLE IF EXISTS Employee;
+DROP TABLE IF EXISTS WorkAttendance;
 
 
 BEGIN TRANSACTION;
