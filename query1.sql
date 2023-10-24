@@ -1,27 +1,20 @@
 .mode table
--- who study in master degree and miss class more than 2 times in all subjects and who is professor advisor
-.print 'who study in master degree and miss class more than 2 times in all subjects and who is professor advisor'
-SELECT S.Student_ID AS 'Student ID' , S.Student_Name AS 'Student Name', P.Professor_Name AS 'Advisor' , MissClass
-FROM Student AS S
-INNER JOIN Professor AS P ON S.Professor_ID = P.Professor_ID
-INNER JOIN (
-    SELECT SA.Student_ID, COUNT(*) AS MissClass
-    FROM StudentAttendance AS SA
-    INNER JOIN ClassAttendance AS CA ON SA.ClassAttendance_ID = CA.ClassAttendance_ID
-    INNER JOIN ClassRoomSchedule AS CRS ON CA.ClassRoomSchedule_ID = CRS.ClassRoomSchedule_ID
-    WHERE SA.Student_Check = 0
-    GROUP BY SA.Student_ID
-    HAVING COUNT(*) > 2
-) AS CountMiss ON S.Student_ID = CountMiss.Student_ID
-WHERE S.Student_Degree = 'Master'
-AND S.Student_ID IN (
-    SELECT SA.Student_ID
-    FROM StudentAttendance AS SA
-    INNER JOIN ClassAttendance AS CA ON SA.ClassAttendance_ID = CA.ClassAttendance_ID
-    INNER JOIN ClassRoomSchedule AS CRS ON CA.ClassRoomSchedule_ID = CRS.ClassRoomSchedule_ID
-    WHERE SA.Student_Check = 0
-    GROUP BY SA.Student_ID
-    HAVING COUNT(*) > 2
-);
+.print 'Class Schedule of Student ID 65160502'
+-- SELECT ClassStudent.Student_ID,ClassStudent.Class_ID,  FROM ClassStudent 
+-- WHERE Student_ID = '65160502';
 
-
+SELECT DISTINCT
+    ClassRoomSchedule.ClassRoomSchedule_Time AS 'TIME',
+    Subject.Subject_ID AS 'SUBJECT ID',
+    --ClassStudent.Student_ID,
+    Subject.Subject_Name AS 'SUBJJECT NAME',
+    --ClassRoomSchedule.Semester,
+    Professor.Professor_Name AS 'PROFESSOR'
+FROM
+    Class
+INNER JOIN ClassRoomSchedule ON Class.Class_ID = ClassRoomSchedule.Class_ID
+INNER JOIN ClassStudent ON ClassStudent.Class_ID = Class.Class_ID
+INNER JOIN Subject ON Subject.Subject_ID = ClassRoomSchedule.Subject_ID
+INNER JOIN ClassAttendance ON ClassAttendance.ClassRoomSchedule_ID = ClassRoomSchedule.ClassRoomSchedule_ID
+INNER JOIN Professor ON Professor.Professor_ID = ClassAttendance.Professor_ID
+WHERE ClassStudent.Student_ID = 65160502 AND ClassRoomSchedule.Semester = '1' AND ClassRoomSchedule.AcademicYear = '2023';

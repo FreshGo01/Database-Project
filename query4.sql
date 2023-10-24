@@ -1,21 +1,28 @@
 .mode table
---Top 10 professors who teach the most
-.print 'Top 10 Professors who teach the most'
+--'the average percentage time of every subject that student study in 2023 sort by Study Time Percentage '
+.print 'the average percentage time of every subject that student study in academic year 2023 sort by Study Time Percentage '
 SELECT
-    Professor.Professor_ID,
-    Professor.Professor_Name,
-    Professor.Professor_Major,
-    COUNT(*) AS Check_Count
+    s.Subject_ID,
+    c.Class_ID,
+    c.Section,
+    ROUND(SUM(CASE WHEN sa.Student_Time_In IS NOT NULL THEN sa.Student_Time_In ELSE 0 END) * 100.0 / SUM(CASE WHEN crs.ClassRoomSchedule_StartTime IS NOT NULL THEN crs.ClassRoomSchedule_StartTime ELSE 0 END), 2) AS StudyTimePercentage
 FROM
-    ClassAttendance
-    INNER JOIN Professor ON ClassAttendance.Professor_ID = Professor.Professor_ID
+    Subject s
+JOIN
+    ResponsibleSubject rs ON s.Subject_ID = rs.Subject_ID
+JOIN
+    Professor p ON rs.Professor_ID = p.Professor_ID
+JOIN
+    ClassRoomSchedule crs ON s.Subject_ID = crs.Subject_ID
+JOIN
+    Class c ON crs.Class_ID = c.Class_ID
+LEFT JOIN
+    ClassStudent cs ON c.Class_ID = cs.Class_ID
+LEFT JOIN
+    StudentAttendance sa ON cs.Student_ID = sa.Student_ID
 WHERE
-    ClassAttendance.Professor_Check = 1
+    crs.AcademicYear = 2023
 GROUP BY
-    Professor.Professor_ID,
-    Professor.Professor_Name,
-    Professor.Professor_Major
+    s.Subject_ID, c.Class_ID, c.Section
 ORDER BY
-    Check_Count DESC
-LIMIT
-    10;
+    StudyTimePercentage DESC;
