@@ -1,4 +1,4 @@
--- sqlite3 CREATE TABLE for check student attendance and professor attendance
+-- txtite3 CREATE TABLE for check student attendance and professor attendance
 PRAGMA foreign_keys = ON;
 
 PRAGMA encoding = "UTF-8";
@@ -275,12 +275,12 @@ CREATE TABLE
 COMMIT TRANSACTION;
 
 BEGIN TRANSACTION;
-.read loadProfessor.sql
-.read loadStudent.sql
-.read loadSubject.sql
-.read loadEmployee.sql
-.read addWorkAtt.sql
-.read loadClassRoomSchedule.sql
-.read addClassAtt.sql
-.read addStudentAtt.sql
+.read loadProfessor.txt
+.read loadStudent.txt
+.read loadSubject.txt
+.read loadEmployee.txt
+.read addWorkAtt.txt
+.read loadClassRoomSchedule.txt
+.read addClassAtt.txt
+.read addStudentAtt.txt
 COMMIT TRANSACTION;

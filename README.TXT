@@ -41,12 +41,13 @@ C.HOW TO USE THIS CODE
     - You should install sqlite3.exe to your computer, you can download it from https://www.sqlite.org/download.html (required SQLite version 3.43.2 or higher)
     - Run terminal,cmd or third party program and change directory to ./Database-Project
     - Run './sqlite3.exe [your database or ./mydatabase.db]'.
-    - Use '.read setup.sql' for insert example data.
+    - Use '.read setup.txt' for insert example data.
     #WARNING#
-    If you .read setup.sql again it will error so if you want to .read setup.sql again you should create a new file to .read it.
-    Or you can delete old files. Then create a new file with the same name and .read setup.sql to get the Schema table to view.
+    If you .read setup.txt again it will error so if you want to .read setup.txt again you should create a new file to .read it.
+    Or you can delete old files. Then create a new file with the same name and .read setup.txt to get the Schema table to view.
     ###################
-    Try using the query command from query1.sql  query2.sql query3.sql query4.sql query5.sql in the ./Database-Project/What_if_query directory.
+    Try using the query command from query1.txt  query2.txt query3.txt query4.txt query5.txt in the ./Database-Project/What_if_query directory.
+    By .read ./What_if_query/['query....txt']
 
 D.Attribute detail
     1.[WorkAttendance.WorkAttendance_Check_In,WorkAttendance.WorkAttendance_Check_Out,StudentAttendance.Student_Check,ClassAttendance.Professor_Check] 
@@ -63,3 +64,5 @@ D.Attribute detail
 
     These attributes enhance the usability and readability of the database while offering automation and convenience in certain scenarios.
     They contribute to a more user-friendly and efficient system for managing attendance and related information.
+
+git hub respository link : https://github.com/FreshGo01/Database-Project.git
