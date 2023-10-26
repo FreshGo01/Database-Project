@@ -50,11 +50,11 @@ CREATE TABLE
 CREATE TABLE
     Professor (
         Professor_ID INTEGER PRIMARY KEY NOT NULL,
-        Professor_Major TEXT NOT NULL,
-        Firstname TEXT NOT NULL,
-        Lastname TEXT NOT NULL,
+        Professor_Major TEXT NOT NULL CHECK (LENGTH (Professor_Major) <= 50),
+        Firstname TEXT NOT NULL CHECK (LENGTH (Firstname) <= 20),
+        Lastname TEXT NOT NULL CHECK (LENGTH (Lastname) <= 20),
         Professor_Name TEXT GENERATED ALWAYS AS (Firstname || ' ' || Lastname) VIRTUAL,
-        Professor_Address TEXT NULL,
+        Professor_Address TEXT NULL CHECK (LENGTH (Professor_Address) <= 100),
         Professor_Birthday TEXT NOT NULL, -- YYYY-MM-DD
         Professor_Gender TEXT NOT NULL CHECK (
             Professor_Gender = 'Male'
@@ -68,7 +68,7 @@ CREATE TABLE
 CREATE TABLE
     ProfessorEmail (
         ProfessorEmail_ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        Professor_Email TEXT NOT NULL,
+        Professor_Email TEXT NOT NULL CHECK (LENGTH (Professor_Email) <= 50),
         Professor_ID INTEGER NOT NULL,
         FOREIGN KEY (Professor_ID) REFERENCES Professor (Professor_ID) ON UPDATE CASCADE ON DELETE CASCADE
     );
@@ -77,7 +77,7 @@ CREATE TABLE
 CREATE TABLE
     ProfessorPhone (
         ProfessorPhone_ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        Professor_Phone TEXT NOT NULL,
+        Professor_Phone TEXT NOT NULL CHECK (LENGTH (Professor_Phone) = 10),
         Professor_ID INTEGER NOT NULL,
         FOREIGN KEY (Professor_ID) REFERENCES Professor (Professor_ID) ON UPDATE CASCADE ON DELETE CASCADE
     );
@@ -86,14 +86,18 @@ CREATE TABLE
 CREATE TABLE
     Student (
         Student_ID INTEGER PRIMARY KEY NOT NULL CHECK (LENGTH (Student_ID) = 8),
-        Student_Major TEXT NOT NULL,
-        Student_Degree TEXT NOT NULL,
+        Student_Major TEXT NOT NULL CHECK (LENGTH (Student_Major) <= 50),
+        Student_Degree TEXT NOT NULL CHECK (
+            Student_Degree = 'Bachelor'
+            OR Student_Degree = 'Master'
+            OR Student_Degree = 'Doctor'
+        ),
         -- Student_Year INTEGER NOT NULL,
-        Firstname TEXT NOT NULL,
-        Lastname TEXT NOT NULL,
+        Firstname TEXT NOT NULL CHECK (LENGTH (Firstname) <= 20),
+        Lastname TEXT NOT NULL CHECK (LENGTH (Lastname) <= 20),
         Student_Name TEXT GENERATED ALWAYS AS (Firstname || ' ' || Lastname) VIRTUAL,
-        Student_Address TEXT NULL,
-        Student_Birthday TEXT NOT NULL, -- YYYY-MM-DD
+        Student_Address TEXT NULL CHECK (LENGTH (Student_Address) <= 100),
+        Student_Birthday TEXT NOT NULL , -- YYYY-MM-DD
         Student_Gender TEXT NOT NULL CHECK (
             Student_Gender = 'Male'
             OR Student_Gender = 'Female'
@@ -107,7 +111,7 @@ CREATE TABLE
 CREATE TABLE
     StudentEmail (
         StudentEmail_ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        Student_Email TEXT NOT NULL,
+        Student_Email TEXT NOT NULL CHECK (LENGTH (Student_Email) <= 30),
         Student_ID INTEGER NOT NULL,
         FOREIGN KEY (Student_ID) REFERENCES Student (Student_ID) ON UPDATE CASCADE ON DELETE CASCADE
     );
@@ -130,7 +134,7 @@ END;
 CREATE TABLE
     StudentPhone (
         StudentPhone_ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        Student_Phone TEXT NOT NULL,
+        Student_Phone TEXT NOT NULL CHECK (LENGTH (Student_Phone) = 10),
         Student_ID INTEGER NOT NULL,
         FOREIGN KEY (Student_ID) REFERENCES Student (Student_ID) ON UPDATE CASCADE ON DELETE CASCADE
     );
@@ -139,7 +143,7 @@ CREATE TABLE
 CREATE TABLE
     ClassRoomSchedule (
         ClassRoomSchedule_ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        ClassRoomSchedule_RoomName TEXT NOT NULL, -- example 'IF-6T02'
+        ClassRoomSchedule_RoomNumber TEXT NOT NULL, -- example 'IF-6T02'
         ClassRoomSchedule_RoomType TEXT NULL,
         ClassRoomSchedule_StartTime TEXT NOT NULL, -- example '08:00'
         ClassRoomSchedule_EndTime TEXT NOT NULL, -- example '10:00'
@@ -210,10 +214,10 @@ CREATE TABLE
 CREATE TABLE
     Employee (
         Employee_ID INTEGER PRIMARY KEY NOT NULL,
-        Firstname TEXT NOT NULL,
-        Lastname TEXT NOT NULL,
+        Firstname TEXT NOT NULL CHECK (LENGTH (Firstname) <= 20),
+        Lastname TEXT NOT NULL CHECK (LENGTH (Lastname) <= 20),
         Employee_Name TEXT GENERATED ALWAYS AS (Firstname || ' ' || Lastname) VIRTUAL,
-        Employee_Address TEXT NULL,
+        Employee_Address TEXT NULL CHECK (LENGTH (Employee_Address) <= 100),
         Employee_Birthday TEXT NOT NULL, -- YYYY-MM-DD
         Employee_Age INTEGER NOT NULL CHECK (Employee_Age > 0),
         Employee_Gender TEXT NOT NULL CHECK (
@@ -228,7 +232,7 @@ CREATE TABLE
 CREATE TABLE
     EmployeeEmail (
         EmployeeEmail_ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        Employee_Email TEXT NOT NULL,
+        Employee_Email TEXT NOT NULL CHECK (LENGTH (Employee_Email) <= 50),
         Employee_ID INTEGER NOT NULL,
         FOREIGN KEY (Employee_ID) REFERENCES Employee (Employee_ID) ON UPDATE CASCADE ON DELETE CASCADE
     );

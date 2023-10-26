@@ -28,7 +28,7 @@ VALUES
 INSERT INTO
     ClassRoomSchedule (
         Subject_ID,
-        ClassRoomSchedule_RoomName,
+        ClassRoomSchedule_RoomNumber,
         ClassRoomSchedule_RoomType,
         ClassRoomSchedule_StartTime,
         ClassRoomSchedule_EndTime,
@@ -365,7 +365,7 @@ VALUES
         88823565,
         'IF-5T02',
         'Tutoring',
-        '15:00',
+        '13:00',
         '16:00',
         'Friday',
         2023,
