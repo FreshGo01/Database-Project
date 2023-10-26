@@ -1,28 +1,91 @@
 .mode table
---'the average percentage time of every subject that student study in 2023 sort by Study Time Percentage '
-.print 'the average percentage time of every subject that student study in academic year 2023 sort by Study Time Percentage '
+-- 'the average percentage time of every subject that student study in 2023 sort by Study Time Percentage '
+.print 'the average percentage time of every subject that students study in academic year 2023 sorted by Study Time Percentage'
+
+WITH StudyTime AS (
+    SELECT
+        Subject_ID,
+        SUM(time_diff_minutes) AS total_study_time_minutes
+    FROM (
+        SELECT
+            crs.Subject_ID,
+            StudentAttendance.Student_ID,
+            ClassAttendance.ClassAttendance_Date,
+            ClassAttendance.ClassAttendance_ID,
+            STRFTIME('%H:%M', COALESCE(NULLIF(TRIM(StudentAttendance.Student_Time_In), ''), '00:00')) AS Time_In,
+            STRFTIME('%H:%M', COALESCE(NULLIF(TRIM(crs.ClassRoomSchedule_Endtime), ''), '00:00')) AS Time_End,
+            CASE
+                WHEN crs.ClassRoomSchedule_Endtime NOT LIKE '00:00' AND StudentAttendance.Student_Time_In NOT LIKE '00:00' AND StudentAttendance.Student_Time_In IS NOT NULL
+                    AND StudentAttendance.Student_Time_In <= crs.ClassRoomSchedule_Endtime
+                THEN
+                    (
+                        (STRFTIME('%H', crs.ClassRoomSchedule_Endtime) - STRFTIME('%H', StudentAttendance.Student_Time_In)) * 60 +
+                        STRFTIME('%M', crs.ClassRoomSchedule_Endtime) - STRFTIME('%M', StudentAttendance.Student_Time_In)
+                    )
+                ELSE 0
+            END AS time_diff_minutes
+        FROM
+            ClassAttendance
+        JOIN
+            StudentAttendance ON ClassAttendance.ClassAttendance_ID = StudentAttendance.ClassAttendance_ID
+        JOIN
+            ClassRoomSchedule crs ON ClassAttendance.ClassRoomSchedule_ID = crs.ClassRoomSchedule_ID
+        JOIN
+            Subject s ON crs.Subject_ID = s.Subject_ID
+        LEFT JOIN
+            Class c ON crs.Class_ID = c.Class_ID
+        LEFT JOIN
+            ClassStudent cs ON c.Class_ID = cs.Class_ID
+        LEFT JOIN
+            StudentAttendance sa ON cs.Student_ID = sa.Student_ID
+        WHERE 
+            ClassAttendance.ClassAttendance_Date BETWEEN '2023-07-07' AND '2023-07-28'
+        GROUP BY
+            crs.Subject_ID, StudentAttendance.Student_ID, ClassAttendance.ClassAttendance_Date, ClassAttendance.ClassAttendance_ID
+        HAVING
+            SUM(time_diff_minutes) != 0
+    )
+    GROUP BY
+        Subject_ID
+)
+
 SELECT
     s.Subject_ID,
-    c.Class_ID,
-    c.Section,
-    ROUND(SUM(CASE WHEN sa.Student_Time_In IS NOT NULL THEN sa.Student_Time_In ELSE 0 END) * 100.0 / SUM(CASE WHEN crs.ClassRoomSchedule_StartTime IS NOT NULL THEN crs.ClassRoomSchedule_StartTime ELSE 0 END), 2) AS StudyTimePercentage
+    COUNT(DISTINCT sa.Student_ID) AS NumberOfStudents,
+    COUNT(DISTINCT csa.ClassAttendance_ID) AS NumberOfStudySessions,
+    (CAST(SUBSTR(crs.ClassRoomSchedule_Time, 7, 2) AS INTEGER) * 60 +
+     CAST(SUBSTR(crs.ClassRoomSchedule_Time, 11, 2) AS INTEGER) -
+     CAST(SUBSTR(crs.ClassRoomSchedule_Time, 1, 2) AS INTEGER) * 60 -
+     CAST(SUBSTR(crs.ClassRoomSchedule_Time, 4, 2) AS INTEGER)) AS Study_Minutes,
+    st.total_study_time_minutes AS total_study_time_minutes,
+    COUNT(DISTINCT sa.Student_ID) * COUNT(DISTINCT csa.ClassAttendance_ID) * 
+    (CAST(SUBSTR(crs.ClassRoomSchedule_Time, 7, 2) AS INTEGER) * 60 +
+     CAST(SUBSTR(crs.ClassRoomSchedule_Time, 11, 2) AS INTEGER) -
+     CAST(SUBSTR(crs.ClassRoomSchedule_Time, 1, 2) AS INTEGER) * 60 -
+     CAST(SUBSTR(crs.ClassRoomSchedule_Time, 4, 2) AS INTEGER)) AS TotalScheduledMinutes,
+    ROUND((st.total_study_time_minutes * 1.0 / NULLIF((COUNT(DISTINCT sa.Student_ID) * COUNT(DISTINCT csa.ClassAttendance_ID) * 
+    (CAST(SUBSTR(crs.ClassRoomSchedule_Time, 7, 2) AS INTEGER) * 60 +
+    CAST(SUBSTR(crs.ClassRoomSchedule_Time, 11, 2) AS INTEGER) -
+    CAST(SUBSTR(crs.ClassRoomSchedule_Time, 1, 2) AS INTEGER) * 60 -
+    CAST(SUBSTR(crs.ClassRoomSchedule_Time, 4, 2) AS INTEGER))), 0)), 4)*100 AS StudyPercentage
+
 FROM
-    Subject s
+    ClassAttendance csa
 JOIN
-    ResponsibleSubject rs ON s.Subject_ID = rs.Subject_ID
+    ClassroomSchedule crs ON csa.ClassRoomSchedule_ID = crs.ClassRoomSchedule_ID
 JOIN
-    Professor p ON rs.Professor_ID = p.Professor_ID
-JOIN
-    ClassRoomSchedule crs ON s.Subject_ID = crs.Subject_ID
-JOIN
+    Subject s ON crs.Subject_ID = s.Subject_ID
+LEFT JOIN
     Class c ON crs.Class_ID = c.Class_ID
 LEFT JOIN
     ClassStudent cs ON c.Class_ID = cs.Class_ID
 LEFT JOIN
     StudentAttendance sa ON cs.Student_ID = sa.Student_ID
+LEFT JOIN
+    StudyTime st ON s.Subject_ID = st.Subject_ID
 WHERE
-    crs.AcademicYear = 2023
+    csa.ClassAttendance_Date BETWEEN '2023-07-01' AND '2023-07-31'
 GROUP BY
-    s.Subject_ID, c.Class_ID, c.Section
+    s.Subject_ID, Study_Minutes
 ORDER BY
-    StudyTimePercentage DESC;
+    s.Subject_ID;
