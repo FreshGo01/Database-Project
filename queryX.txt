@@ -1,0 +1,14 @@
+.mode table
+-- A teacher who teaches more than two subjects?
+.print "A teacher who teaches more than two subjects?"
+SELECT
+    Professor.Professor_Name,
+    GROUP_CONCAT (Subject.Subject_Name, ', ') AS "Subjects Taught"
+FROM
+    Professor
+    INNER JOIN ResponsibleSubject ON Professor.Professor_ID = ResponsibleSubject.Professor_ID
+    INNER JOIN Subject ON ResponsibleSubject.Subject_ID = Subject.Subject_ID
+GROUP BY
+    Professor.Professor_Name
+HAVING
+    COUNT(DISTINCT Subject.Subject_ID) > 2;

@@ -47,8 +47,8 @@ C.HOW TO USE THIS CODE
     If you .read setup.txt again it will error so if you want to .read setup.txt again you should create a new file to .read it.
     Or you can delete old files. Then create a new file with the same name and .read setup.txt to get the Schema table to view.
     ###################
-    Try using the query command from query1.txt  query2.txt query3.txt query4.txt query5.txt in the ./Database-Project/What_if_query directory.
-    By .read ./What_if_query/['query....txt']
+    Try using the query command to read query1.txt  query2.txt query3.txt query4.txt query5.txt in command line.
+        Like .read ['query....txt']
 
 D.Attribute detail
     1.[WorkAttendance.WorkAttendance_Check_In,WorkAttendance.WorkAttendance_Check_Out,StudentAttendance.Student_Check,ClassAttendance.Professor_Check] 
