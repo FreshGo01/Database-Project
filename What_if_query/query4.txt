@@ -39,7 +39,7 @@ WITH StudyTime AS (
         LEFT JOIN
             StudentAttendance sa ON cs.Student_ID = sa.Student_ID
         WHERE 
-            ClassAttendance.ClassAttendance_Date BETWEEN '2023-07-07' AND '2023-07-28'
+            ClassAttendance.ClassAttendance_Date BETWEEN '2023-07-01' AND '2023-07-31'
         GROUP BY
             crs.Subject_ID, StudentAttendance.Student_ID, ClassAttendance.ClassAttendance_Date, ClassAttendance.ClassAttendance_ID
         HAVING

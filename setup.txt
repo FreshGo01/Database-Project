@@ -279,12 +279,12 @@ CREATE TABLE
 COMMIT TRANSACTION;
 
 BEGIN TRANSACTION;
-.read loadProfessor.txt
-.read loadStudent.txt
-.read loadSubject.txt
-.read loadEmployee.txt
-.read addWorkAtt.txt
-.read loadClassRoomSchedule.txt
-.read addClassAtt.txt
-.read addStudentAtt.txt
+.read ./Insert/loadProfessor.txt
+.read ./Insert/loadStudent.txt
+.read ./Insert/loadSubject.txt
+.read ./Insert/loadEmployee.txt
+.read ./Insert/addWorkAtt.txt
+.read ./Insert/loadClassRoomSchedule.txt
+.read ./Insert/addClassAtt.txt
+.read ./Insert/addStudentAtt.txt
 COMMIT TRANSACTION;

@@ -42,6 +42,7 @@ C.HOW TO USE THIS CODE
     - Run terminal,cmd or third party program and change directory to ./Database-Project
     - Run './sqlite3.exe [your database or ./mydatabase.db]'.
     - Use '.read setup.txt' for insert example data.
+    - Now you can use this database.
     #WARNING#
     If you .read setup.txt again it will error so if you want to .read setup.txt again you should create a new file to .read it.
     Or you can delete old files. Then create a new file with the same name and .read setup.txt to get the Schema table to view.
